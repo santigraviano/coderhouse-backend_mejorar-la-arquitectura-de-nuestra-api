@@ -1,4 +1,5 @@
-const DB = require('../../containers/mongodb.js')
+const ContainerFactory = require('../../factories/container.factory')
+const DB = ContainerFactory.getContainer('mongodb') // require('../../containers/mongodb.js')
 
 module.exports = class CartMongo extends DB {
   constructor() {

@@ -4,7 +4,8 @@ const logger = require('../services/logger')
 const mailer = require('../services/nodemailer')
 const twilio = require('../services/twilio')
 const config = require('../config')
-const { Cart } = require('../models')
+// const { Cart } = require('../models')
+const ModelFactory = require('../factories/model.factory')
 
 class MainController {
   index(req, res) {
@@ -14,6 +15,7 @@ class MainController {
 
   async cart(req, res) {
     const { user } = req
+    const Cart = ModelFactory.getModel('cart')
     const cart = await Cart.getByUserId(req.user.id)
     res.render('cart', { user, cart })
   }
@@ -24,6 +26,7 @@ class MainController {
   }
 
   async order(req, res) {
+    const Cart = ModelFactory.getModel('cart')
     const cart = await Cart.getByUserId(req.user.id)
 
     let html = `

@@ -1,4 +1,7 @@
-const { Product } = require('../models/index.js')
+//const { Product } = require('../models/index.js')
+const ModelFactory = require('../factories/model.factory')
+const Product = ModelFactory.getModel('product')
+
 const { broadcast } = require('../services/io.js')
 const logger = require('../services/logger')
 

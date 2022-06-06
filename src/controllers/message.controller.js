@@ -1,4 +1,6 @@
-const { Message } = require('../models/index.js')
+// const { Message } = require('../models/index.js')
+const ModelFactory = require('../factories/model.factory')
+const Message = ModelFactory.getModel('message')
 const { broadcast } = require('../services/io.js')
 const logger = require('../services/logger')
 

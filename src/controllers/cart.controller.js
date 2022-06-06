@@ -1,5 +1,7 @@
-const { Product } = require('../models')
-const { Cart } = require('../models')
+// const { Product } = require('../models')
+// const { Cart } = require('../models')
+const ModelFactory = require('../factories/model.factory')
+const Cart = ModelFactory.getModel('cart')
 
 class CartController {
 
@@ -41,6 +43,8 @@ class CartController {
     try {
       const { productId } = req.params
       const { _id, products } = await Cart.getByUserId(req.user.id)
+
+      const Product = ModelFactory.getModel('product')
 
       const product = await Product.getById(productId)
 

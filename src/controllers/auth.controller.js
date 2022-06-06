@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt')
-const { User, Cart } = require('../models')
+// const { User, Cart } = require('../models')
+const ModelFactory = require('../factories/model.factory')
+const User = ModelFactory.getModel('user')
 const mailer = require('../services/nodemailer')
 const config = require('../config')
 
@@ -27,6 +29,8 @@ class AuthController {
         password,
         avatar
       })
+
+      const Cart = ModelFactory.getModel('cart')
 
       await Cart.save({ userId: id, products: [] })
 
